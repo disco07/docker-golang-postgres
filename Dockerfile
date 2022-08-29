@@ -8,4 +8,4 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app-go ./cmd/api
 FROM scratch
 COPY --from=builder ./app-go/app-go /usr/bin/app-go
 EXPOSE 4001
-ENTRYPOINT ["/usr/bin/movies-go"]
+ENTRYPOINT ["/usr/bin/app-go"]
