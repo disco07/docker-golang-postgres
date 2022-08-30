@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"net/http"
+	"time"
+)
 
 type post struct {
 	ID          int
@@ -11,6 +14,11 @@ type post struct {
 	PublishedAt time.Time
 }
 
-func main() {
+func getPosts(w http.ResponseWriter, r *http.ResponseWriter) {
 
+}
+
+func main() {
+	http.HandleFunc("/posts", getPosts)
+	http.ListenAndServe(":8000", nil)
 }
