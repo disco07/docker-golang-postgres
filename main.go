@@ -67,7 +67,7 @@ func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
 func main() {
 	var cfg = config{
 		port: 8000,
-		dsn:  "postgres://app:app@localhost/app?sslmode=disable",
+		dsn:  "postgres://app:app@postgres-container/app?sslmode=disable",
 	}
 
 	db, err := open(cfg)
