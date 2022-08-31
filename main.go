@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type config struct {
+	port int
+	dsn  string
+}
+
 type post struct {
 	ID          int
 	Title       string
@@ -14,7 +19,11 @@ type post struct {
 	PublishedAt time.Time
 }
 
-func getPosts(w http.ResponseWriter, r *http.ResponseWriter) {
+func getPosts(w http.ResponseWriter, _ *http.Request) {
+	w.Write([]byte("hello"))
+}
+
+func init() {
 
 }
 
