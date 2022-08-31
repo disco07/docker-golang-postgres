@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	_ "github.com/lib/pq"
 	"log"
@@ -23,8 +24,44 @@ type post struct {
 	PublishedAt time.Time
 }
 
-func getPosts(w http.ResponseWriter, _ *http.Request) {
-	w.Write([]byte("hello"))
+type apps struct {
+	DB *sql.DB
+}
+
+func JSON(w http.ResponseWriter, status int, data interface{}) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	js, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
+	w.Write(js)
+
+	return nil
+}
+
+func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
+
+	query := fmt.Sprintf(`SELECT * FROM post`)
+	rows, err := a.DB.QueryContext(r.Context(), query)
+	if err != nil {
+		JSON(w, http.StatusBadRequest, err)
+	}
+	defer rows.Close()
+
+	var posts []*post
+
+	for rows.Next() {
+		var post post
+		err := rows.Scan(&post.ID, &post.Title, &post.Slug, &post.Summary, &post.Content, &post.PublishedAt)
+		if err != nil {
+			JSON(w, http.StatusBadRequest, err)
+		}
+		posts = append(posts, &post)
+	}
+
+	JSON(w, http.StatusOK, posts)
 }
 
 func main() {
@@ -40,7 +77,9 @@ func main() {
 	}
 	defer db.Close()
 
-	http.HandleFunc("/posts", getPosts)
+	app := apps{db}
+
+	http.HandleFunc("/posts", app.getPosts)
 	http.ListenAndServe(fmt.Sprintf(":%v", cfg.port), nil)
 }
 
