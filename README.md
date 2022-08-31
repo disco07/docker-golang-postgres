@@ -26,7 +26,7 @@ To build images and start container
 ```bash
 docker-compose up --build
 ```
-Run to consume api
+Run this to consume api
 ```bash
 curl http://localhost:8000/posts
 ```
