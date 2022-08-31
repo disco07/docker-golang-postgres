@@ -26,3 +26,30 @@ To build images and start container
 ```bash
 docker-compose up --build
 ```
+## Built with
+
+### Language
+<li>Golang</li>
+<li>Docker</li>
+<li>Docker-compose</li>
+
+### Tools
+<li>Golang-JetBrains</li>
+<li>Github</li>
+
+## Author 👤
+<strong>Drissa Koné</strong>
+
+<li>Github: <a href="https://github.com/disco07">@disco07</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/drissa-kon%C3%A9">@drissakone</a></li>
+
+## Contributing 🤝
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the issues page.
+
+## Support me
+Give a ⭐️ if you like this project!
+
+## 📝 License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
