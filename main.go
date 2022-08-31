@@ -30,7 +30,7 @@ type apps struct {
 
 func JSON(w http.ResponseWriter, status int, data interface{}) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(status)
 
 	js, err := json.Marshal(data)
 	if err != nil {
@@ -67,7 +67,7 @@ func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
 func main() {
 	var cfg = config{
 		port: 8000,
-		dsn:  "postgres://blog:blog@localhost/blog?sslmode=disable",
+		dsn:  "postgres://app:app@localhost/app?sslmode=disable",
 	}
 
 	db, err := open(cfg)
