@@ -15,7 +15,7 @@ services:
     networks:
       - golang-postgres-docker
     ports:
-      - "4001:4001"
+      - "8000:8000"
 
   postgres:
     image: postgres
