@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -35,5 +36,12 @@ func TestGetPosts(t *testing.T) {
 	if status := rr.Code; status != http.StatusOK {
 		t.Errorf("handler returned wrong status code: got %v want %v",
 			status, http.StatusOK)
+	}
+
+	var posts []post
+	err = json.NewDecoder(rr.Body).Decode(&posts)
+	if err != nil {
+		t.Error(err.Error())
+		t.Error("Error retreiving list of timezones.")
 	}
 }
