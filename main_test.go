@@ -10,14 +10,11 @@ import (
 func TestGetPosts(t *testing.T) {
 	// Create a request to pass to our handler. We don't have any query parameters for now, so we'll
 	// pass 'nil' as the third parameter.
-	req, err := http.NewRequest("GET", "/posts", nil)
-	if err != nil {
-		t.Fatal(err)
-	}
+	req := httptest.NewRequest("GET", "/posts", nil)
 
 	var cfg = config{
 		port: 8000,
-		dsn:  "postgres://app:app@postgres-container/app?sslmode=disable",
+		dsn:  "postgres://app:app@localhost/app?sslmode=disable",
 	}
 
 	db, err := open(cfg)
