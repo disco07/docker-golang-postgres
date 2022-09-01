@@ -1,4 +1,5 @@
-# docker-golang-postgres ![example workflow](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+![example workflow](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+# docker-golang-postgres 
 Dockerize golang apps
 
 ## Getting Started
