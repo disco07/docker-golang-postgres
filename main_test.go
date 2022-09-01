@@ -42,6 +42,10 @@ func TestGetPosts(t *testing.T) {
 	err = json.NewDecoder(rr.Body).Decode(&posts)
 	if err != nil {
 		t.Error(err.Error())
-		t.Error("Error retreiving list of timezones.")
+		t.Error("Error retreiving list of posts.")
+	}
+
+	if len(posts) == 0 {
+		t.Error("Error retreiving list of posts.")
 	}
 }
