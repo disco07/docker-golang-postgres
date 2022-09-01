@@ -1,4 +1,4 @@
-![example workflow](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+[![ci](https://github.com/disco07/docker-golang-postgres/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/disco07/docker-golang-postgres/actions/workflows/ci.yml)
 # docker-golang-postgres 
 Dockerize golang apps
 
