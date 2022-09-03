@@ -1,13 +1,28 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 func TestFindAllPost(t *testing.T) {
+	app := newApp()
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	posts, err := app.findAllPost(ctx)
+
+	if err != nil {
+		t.Error("Get All Posts failed.")
+	}
+
+	if len(posts) == 0 {
+		t.Error("Posts did not return any values.")
+	}
 
 }
 
@@ -16,14 +31,7 @@ func TestGetPosts(t *testing.T) {
 	// pass 'nil' as the third parameter.
 	req := httptest.NewRequest("GET", "/posts", nil)
 
-	var cfg = config{
-		port: 8000,
-		dsn:  "postgres://app:app@localhost/app?sslmode=disable",
-	}
-
-	db, err := open(cfg)
-
-	app := apps{db}
+	app := newApp()
 
 	// We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
 	rr := httptest.NewRecorder()
@@ -40,7 +48,7 @@ func TestGetPosts(t *testing.T) {
 	}
 
 	var posts []post
-	err = json.NewDecoder(rr.Body).Decode(&posts)
+	err := json.NewDecoder(rr.Body).Decode(&posts)
 	if err != nil {
 		t.Error(err.Error())
 		t.Error("Error retreiving list of posts.")
@@ -48,5 +56,17 @@ func TestGetPosts(t *testing.T) {
 
 	if len(posts) == 0 {
 		t.Error("Error retreiving list of posts.")
+	}
+}
+
+func newApp() apps {
+	cfg := config{
+		port: 8000,
+		dsn:  "postgres://app:app@localhost/app?sslmode=disable",
+	}
+
+	db, _ := open(cfg)
+	return apps{
+		DB: db,
 	}
 }
