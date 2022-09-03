@@ -64,7 +64,6 @@ func (a apps) findAllPost(ctx context.Context) ([]*post, error) {
 }
 
 func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
-
 	posts, err := a.findAllPost(r.Context())
 	if err != nil {
 		JSON(w, http.StatusBadRequest, err)
