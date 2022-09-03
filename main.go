@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -41,12 +42,11 @@ func JSON(w http.ResponseWriter, status int, data interface{}) error {
 	return nil
 }
 
-func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
-
+func (a apps) findAllPost(ctx context.Context) ([]*post, error) {
 	query := fmt.Sprintf(`SELECT * FROM post`)
-	rows, err := a.DB.QueryContext(r.Context(), query)
+	rows, err := a.DB.QueryContext(ctx, query)
 	if err != nil {
-		JSON(w, http.StatusBadRequest, err)
+		return nil, err
 	}
 	defer rows.Close()
 
@@ -56,9 +56,18 @@ func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
 		var post post
 		err := rows.Scan(&post.ID, &post.Title, &post.Slug, &post.Summary, &post.Content, &post.PublishedAt)
 		if err != nil {
-			JSON(w, http.StatusBadRequest, err)
+			return nil, err
 		}
 		posts = append(posts, &post)
+	}
+	return posts, nil
+}
+
+func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
+
+	posts, err := a.findAllPost(r.Context())
+	if err != nil {
+		JSON(w, http.StatusBadRequest, err)
 	}
 
 	JSON(w, http.StatusOK, posts)
