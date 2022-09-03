@@ -1,4 +1,5 @@
-# docker-golang-postgres
+[![ci](https://github.com/disco07/docker-golang-postgres/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/disco07/docker-golang-postgres/actions/workflows/ci.yml)
+# docker-golang-postgres 
 Dockerize golang apps
 
 ## Getting Started
@@ -57,3 +58,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+=======
