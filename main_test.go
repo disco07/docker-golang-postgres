@@ -32,7 +32,6 @@ func TestGetPosts(t *testing.T) {
 	req := httptest.NewRequest("GET", "/posts", nil)
 
 	app := newApp()
-
 	// We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(app.getPosts)
