@@ -7,6 +7,10 @@ import (
 	"testing"
 )
 
+func TestFindAllPost(t *testing.T) {
+
+}
+
 func TestGetPosts(t *testing.T) {
 	// Create a request to pass to our handler. We don't have any query parameters for now, so we'll
 	// pass 'nil' as the third parameter.
