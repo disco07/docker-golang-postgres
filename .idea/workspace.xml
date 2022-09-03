@@ -79,6 +79,28 @@
       <pattern value="^\QTestGetPosts\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestOpen in github.com/disco07/docker-golang-postgres" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="docker-golang-postgres" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/disco07/docker-golang-postgres" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestOpen\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestOpenDB in github.com/disco07/docker-golang-postgres" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="docker-golang-postgres" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/disco07/docker-golang-postgres" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestOpenDB\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test github.com/disco07/docker-golang-postgres" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="docker-golang-postgres" />
       <working_directory value="$PROJECT_DIR$" />
@@ -89,45 +111,20 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="commandLineOptions" value="--build" />
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="commandLineOptions" value="--build" />
-          <option name="services">
-            <list>
-              <option value="server" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.docker-compose.yml.server: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Go Test.TestFindAllPost in github.com/disco07/docker-golang-postgres" />
       <item itemvalue="Go Test.TestGetPosts in github.com/disco07/docker-golang-postgres" />
+      <item itemvalue="Go Test.TestOpen in github.com/disco07/docker-golang-postgres" />
+      <item itemvalue="Go Test.TestOpenDB in github.com/disco07/docker-golang-postgres" />
       <item itemvalue="Go Test.go test github.com/disco07/docker-golang-postgres" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Go Test.go test github.com/disco07/docker-golang-postgres" />
-        <item itemvalue="Go Test.TestGetPosts in github.com/disco07/docker-golang-postgres" />
         <item itemvalue="Go Test.TestFindAllPost in github.com/disco07/docker-golang-postgres" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.server: Compose Deployment" />
+        <item itemvalue="Go Test.TestOpen in github.com/disco07/docker-golang-postgres" />
+        <item itemvalue="Go Test.TestOpenDB in github.com/disco07/docker-golang-postgres" />
+        <item itemvalue="Go Test.TestGetPosts in github.com/disco07/docker-golang-postgres" />
       </list>
     </recent_temporary>
   </component>

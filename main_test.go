@@ -11,7 +11,6 @@ import (
 
 func TestFindAllPost(t *testing.T) {
 	app := newApp()
-
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	posts, err := app.findAllPost(ctx)
