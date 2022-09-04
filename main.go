@@ -42,7 +42,7 @@ func JSON(w http.ResponseWriter, status int, data interface{}) error {
 	return nil
 }
 
-func (a apps) findAllPost(ctx context.Context) ([]*post, error) {
+func (a *apps) findAllPost(ctx context.Context) ([]*post, error) {
 	query := fmt.Sprintf(`SELECT * FROM post`)
 	rows, err := a.DB.QueryContext(ctx, query)
 	if err != nil {
@@ -63,7 +63,7 @@ func (a apps) findAllPost(ctx context.Context) ([]*post, error) {
 	return posts, nil
 }
 
-func (a apps) getPosts(w http.ResponseWriter, r *http.Request) {
+func (a *apps) getPosts(w http.ResponseWriter, r *http.Request) {
 	posts, err := a.findAllPost(r.Context())
 	if err != nil {
 		JSON(w, http.StatusBadRequest, err)
@@ -88,7 +88,7 @@ func main() {
 	app := apps{db}
 
 	http.HandleFunc("/posts", app.getPosts)
-	http.ListenAndServe(fmt.Sprintf(":%v", cfg.port), nil)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", cfg.port), nil))
 }
 
 func open(cfg config) (*sql.DB, error) {
